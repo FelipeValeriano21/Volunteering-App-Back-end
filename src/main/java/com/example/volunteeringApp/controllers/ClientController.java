@@ -17,7 +17,7 @@ public class ClientController {
     @CrossOrigin(origins = "http://localhost:5173/Register")
     @PostMapping
     public Clients createClient(@RequestBody Clients client) {
-        Clients result = clientService.addClient(client);
+        Clients result = clientService.createClient(client);
         return result;
     }
 

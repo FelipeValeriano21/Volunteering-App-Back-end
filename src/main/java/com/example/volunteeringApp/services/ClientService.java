@@ -1,5 +1,6 @@
 package com.example.volunteeringApp.services;
 
+import com.example.volunteeringApp.encripty.PasswordUtil;
 import com.example.volunteeringApp.entities.Clients;
 import com.example.volunteeringApp.exceptions.EmailAlreadyExisteException;
 import com.example.volunteeringApp.repositories.ClientRepository;
@@ -17,11 +18,6 @@ public class ClientService {
     @Autowired
     private ClientRepository clientRepository;
 
-    public Clients addClient(@RequestBody Clients client) {
-        return clientRepository.save(client);
-
-    }
-
     public List<Clients> getAllClients() {
         return clientRepository.findAll();
     }
@@ -29,6 +25,7 @@ public class ClientService {
     @Transactional
     public Clients createClient(@RequestBody Clients client) {
         validateEmailUniqueness(client.getEmail());
+        client.setPassword(PasswordUtil.encryptPassword(client.getPassword()));
         return clientRepository.save(client);
     }
 
