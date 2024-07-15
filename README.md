@@ -34,3 +34,7 @@ Esta é uma API backend desenvolvida em Spring Boot que realiza operações CRUD
 **Get e Post**
  ```sh
    http://localhost:8080/clients
+
+**Post**
+ ```sh
+   http://localhost:8080/login
